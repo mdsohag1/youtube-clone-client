@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import PlayVideoPage from "./components/PlayVideoPage/PlayVideoPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
+import Profile from "./pages/Profile/Profile";
+import SigninModal from "./components/SigninModal/SigninModal";
+
+export const ThemeContext = createContext();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const [darkMode, setDarkMode] = useState(false);
+   return (
+      <div className="App">
+         <ThemeContext.Provider value={[darkMode, setDarkMode]}>
+            <BrowserRouter>
+               <Header />
+               <Routes>
+                  <Route index element={<Home type={"random"} />} />
+                  <Route path="/trend" element={<Home type={"trend"} />} />
+                  <Route path="/subscription" element={<Home type={"sub"} />} />
+                  <Route path="/video" element={<PlayVideoPage />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/signin" element={<SigninModal />} />
+               </Routes>
+            </BrowserRouter>
+         </ThemeContext.Provider>
+      </div>
+   );
 }
 
 export default App;

@@ -1,0 +1,74 @@
+.playvideo {
+   display: flex;
+   justify-content: space-evenly;
+   background-color: rgb(245, 245, 245);
+}
+.left {
+   width: auto;
+   padding-top: 20px;
+   padding-left: 60px;
+   display: flex;
+   flex-direction: column;
+}
+
+.left > img {
+   width: 100%;
+   border-radius: 10px;
+}
+.right {
+   width: 35rem;
+}
+.linkSection {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 20px;
+}
+.linkIcons {
+   display: flex;
+}
+.linkIcons > div {
+   margin-left: 25px;
+   cursor: pointer;
+}
+.linkIcons > div > svg {
+   margin-right: 10px;
+}
+.subscribe {
+   display: flex;
+   justify-content: space-between;
+}
+.videoLogo {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   margin-right: 20px;
+   cursor: pointer;
+}
+.videoLogo > img {
+   width: 100%;
+   border-radius: 50%;
+}
+.sub > button {
+   width: 150px;
+   border: none;
+   outline: none;
+   background-color: red;
+   color: #fff;
+   height: 40px;
+   border-radius: 10px;
+}
+.sub > button:hover {
+   background-color: rgb(222, 3, 3);
+}
+.description {
+   margin-left: 70px;
+   width: 1000px;
+}
+.comment > input {
+   border: none;
+   outline: none;
+   background-color: rgb(245, 245, 245);
+   width: 100%;
+   border-bottom: 1px solid lightgray;
+}

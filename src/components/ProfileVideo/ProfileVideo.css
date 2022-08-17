@@ -1,0 +1,11 @@
+.profileVideo {
+   margin: 15px;
+}
+.videoCard {
+   width: 200px;
+   display: flex;
+   flex-direction: column;
+}
+.videoCard > h6 {
+   margin-top: 5px;
+}
