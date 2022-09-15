@@ -13,9 +13,8 @@
 .logo-text {
    display: flex;
    padding: 10px 0;
-   justify-content: center;
 }
-.logo-text > img {
+.logo-text > a > img {
    width: 40px;
    height: 40px;
    border-radius: 50%;

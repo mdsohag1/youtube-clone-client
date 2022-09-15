@@ -1,31 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Videos.css";
 import VideoCard from "../VideoCard/VideoCard";
-import { darkTheme } from "../../utilis/Theme";
 import axios from "axios";
-
-import { ThemeContext } from "../../App";
+import { useSelector } from "react-redux";
 
 const Videos = ({ type }) => {
-   const [darkMode, setDarkMode] = useContext(ThemeContext);
-
-   const bgLighter = {
-      background: darkMode ? darkTheme.bgLighter : "rgb(246, 246, 246)",
-   };
-
+   const { currentUser } = useSelector((state) => state.user);
    const [videosData, setVideosData] = useState([]);
+   const apiURL = "http://localhost:5000/api";
+   const authAxios = axios.create({
+      baseURL: apiURL,
+      headers: {
+         Authorization: `Bearer ${currentUser ? currentUser.token : null}`,
+      },
+   });
+
    useEffect(() => {
       const fetchVideos = async () => {
-         const res = await axios.get(
-            `http://localhost:5000/api/videos/${type}`
-         );
-         setVideosData(res.data);
+         setVideosData([]);
+         if (currentUser) {
+            const res = await authAxios.get(`/videos/${type}`);
+            setVideosData(res.data);
+         } else {
+            const res = await axios.get(`${apiURL}/videos/${type}`);
+            setVideosData(res.data);
+         }
       };
       fetchVideos();
    }, [type]);
 
    return (
-      <div className="videos" style={bgLighter}>
+      <div className="videos">
          {videosData.map((video) => (
             <VideoCard video={video} key={video._id} />
          ))}

@@ -1,16 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { format } from "timeago.js";
 import "./ProfileVideo.css";
 
 const ProfileVideo = ({ video }) => {
    return (
       <div className="profileVideo">
-         <div className="videoCard">
-            <img src={video.thumble} alt="" />
-            <h6>{video.title}</h6>
-            <p>
-               {video.views} views . {video.date}
-            </p>
-         </div>
+         <Link
+            to={`/video/${video._id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+         >
+            <div className="videoCard">
+               <img src={video.imgUrl} alt="" />
+               <h6>{video.tittle}</h6>
+               <p>
+                  {video.views} views . {format(video.createdAt)}
+               </p>
+            </div>
+         </Link>
       </div>
    );
 };

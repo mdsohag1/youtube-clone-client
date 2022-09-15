@@ -16,6 +16,7 @@ const SigninModal = () => {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [confirmPass, setConfirmPass] = useState("");
+   const [samePass, setSamePass] = useState("");
 
    const dispatch = useDispatch();
 
@@ -31,6 +32,25 @@ const SigninModal = () => {
             dispatch(loginSuccess(res.data));
          } catch (error) {
             dispatch(loginFailure());
+         }
+      }
+      if (newUser) {
+         if (password !== confirmPass) {
+            setSamePass("Please type the same password");
+         } else {
+            setSamePass("");
+         }
+         if (password === confirmPass) {
+            try {
+               await axios.post("http://localhost:5000/api/auth/signup", {
+                  name,
+                  email,
+                  password,
+               });
+               setNewUser(false);
+            } catch (error) {
+               console.log(error);
+            }
          }
       }
    };
@@ -101,6 +121,7 @@ const SigninModal = () => {
                   </div>
                )}
             </div>
+            <p>{samePass}</p>
             <button onClick={handleLogin} className="signinBtn">
                {newUser ? "SignUp" : "signIn"}
             </button>

@@ -1,18 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SuggestVideo.css";
 
 const SuggestVideo = ({ video }) => {
    return (
-      <div className="suggestVideo">
-         <img src={video.thumble} alt="" />
-         <div className="text">
-            <h5>{video.title}</h5>
-            <h6>{video.channelName}</h6>
-            <p>
-               {video.views} views. {video.date}
-            </p>
+      <Link
+         to={`/video/${video._id}`}
+         style={{ textDecoration: "none", color: "inherit" }}
+      >
+         <div className="suggestVideo">
+            <img src={video.imgUrl} alt="" />
+            <div className="text">
+               <h5>{video.tittle}</h5>
+               <h6>{video.channelName}</h6>
+               <p>
+                  {video.views} views. {video.date}
+               </p>
+            </div>
          </div>
-      </div>
+      </Link>
    );
 };
 

@@ -7,13 +7,21 @@
    position: sticky;
    top: 0;
    z-index: 1;
+   background-color: #fff;
 }
 .search-aria {
    display: flex;
    align-items: center;
    margin: 0 auto;
 }
-.search {
+
+.search > svg {
+   margin-right: 10px;
+   position: absolute;
+   margin-left: 20px;
+   margin-top: 17px;
+}
+.search > input {
    width: 600px;
    height: 50px;
    border: 1px solid rgb(239, 239, 239);
@@ -22,19 +30,7 @@
    align-items: center;
    padding: 15px;
    border-radius: 10px;
-}
-.search:active {
-   border: 2px solid rgb(170, 170, 255);
-}
-.search > svg {
-   margin-right: 10px;
-}
-.search > input {
-   border: none;
-   outline: none;
-   width: 100%;
-   height: 100%;
-   font-weight: 500;
+   padding-left: 50px;
 }
 .icon-right {
    width: 50px;
@@ -72,6 +68,11 @@
    border-radius: 50%;
 }
 .aria-right > a > svg {
+   margin: 0 15px;
+   cursor: pointer;
+   border-radius: 50%;
+}
+.aria-right > span > svg {
    margin: 0 15px;
    cursor: pointer;
    border-radius: 50%;
