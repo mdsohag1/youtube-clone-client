@@ -48,7 +48,6 @@ const PlayVideoPage = () => {
             `${baseUrl}/users/find/${currentVideo.userId}`
          );
          console.log(resChannel.data);
-
          setChannel(resChannel.data);
       };
       fetchingChannel();
@@ -102,7 +101,6 @@ const PlayVideoPage = () => {
                      ) : (
                         <Like color="#000" size={"1.5rem"} />
                      )}
-
                      <span>{currentVideo.likes?.length}</span>
                   </div>
                   <div onClick={handleDislike}>
